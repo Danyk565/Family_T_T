@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "25757844783",
+    "firebase_url": "https://family-task-tracker-16f17-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "family-task-tracker-16f17",
+    "storage_bucket": "family-task-tracker-16f17.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:25757844783:android:ecc390d8821e0b892a0dda",
+        "android_client_info": {
+          "package_name": "com.example.family_task_tracker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfirlAapw6svhY7_QoNfyIzq75ScsLiUA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
