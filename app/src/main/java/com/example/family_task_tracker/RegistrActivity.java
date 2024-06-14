@@ -80,6 +80,7 @@ Intent intent_transition = new Intent(RegistrActivity.this,LoginActivity.class);
             }
         });
     }
+    //binding
     /*@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
