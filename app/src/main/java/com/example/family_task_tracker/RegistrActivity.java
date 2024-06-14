@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -33,6 +34,7 @@ public class RegistrActivity extends AppCompatActivity {
     public String role;
 
 }*/
+//Button Sign_up_btn = findViewById(R.id.Sign_up_btn);
     public void onClick_back(View v){
 Intent intent_transition = new Intent(RegistrActivity.this,LoginActivity.class);
         startActivity(intent_transition);
@@ -64,14 +66,15 @@ Intent intent_transition = new Intent(RegistrActivity.this,LoginActivity.class);
                                         userInfo.put("role","");
                                         FirebaseDatabase.getInstance().getReference().child("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                                 .setValue(userInfo);
+                                        Intent intent_role = new Intent(RegistrActivity.this,Role_choosing.class);
+                                        startActivity(intent_role);
 
-                                        Intent intent_id = new Intent(RegistrActivity.this,Role_choosing.class);
-                                        intent_id.putExtra("id", FirebaseDatabase.getInstance().getReference().child("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).toString());
-                                        startActivity(intent_id);
-
+                                        //Intent intent_id = new Intent(RegistrActivity.this,Role_choosing.class);
+                                        //intent_id.putExtra("id", FirebaseDatabase.getInstance().getReference().child("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).toString());
+                                        //startActivity(intent_id);
                                     }
                                 }
-                            });
+                            }   );
 
                 }
             }

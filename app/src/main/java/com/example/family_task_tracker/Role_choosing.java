@@ -29,19 +29,20 @@ public class Role_choosing extends AppCompatActivity {
     private ActivityRoleBinding binding;
     private FirebaseAuth mAuth;
     private DatabaseReference MyRef;
- FirebaseUser user = mAuth.getInstance().getCurrentUser();
- int userId = getIntent().getIntExtra("id", 0);
+ //FirebaseUser user = mAuth.getInstance().getCurrentUser();
+ //int userName = getIntent().getIntExtra("id", 0);
  FirebaseListAdapter mAdapter;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityRoleBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        //setContentView(binding.getRoot());
+        setContentView(R.layout.activity_role);
         ToggleButton parent_btn = (ToggleButton) findViewById(R.id.parent_btn); // Кнопка для выбора роли родителя(лидер группы)
         ToggleButton child_btn = (ToggleButton) findViewById(R.id.child_btn);// Кнопка для выбора роли ребёнка
         MyRef = FirebaseDatabase.getInstance().getReference();
 
 
-        binding.roleChooseBtn.setOnClickListener(new View.OnClickListener() {
+        /*binding.roleChooseBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 boolean on_parent = parent_btn.isChecked();
@@ -52,7 +53,7 @@ public class Role_choosing extends AppCompatActivity {
                     MyRef.child(user.getUid()).child("Role").push().setValue("Child");
                 }
             }
-        });
+        });*/
 
         /*parent_btn.setOnTouchListener(new View.OnTouchListener() {
             @Override
