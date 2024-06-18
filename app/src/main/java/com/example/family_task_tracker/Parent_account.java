@@ -9,7 +9,7 @@ public class Parent_account extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Данил лох
+        //Данил мандариновый носорог
         setContentView(R.layout.activity_parent_account);
     }
 }
