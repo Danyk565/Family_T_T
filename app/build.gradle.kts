@@ -45,9 +45,10 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     
-    implementation ("com.google.firebase:firebase-bom:32.8.0")
-    implementation ("com.google.firebase:firebase-analytics-ktx:21.6.1")
-    implementation("com.google.firebase:firebase-auth:22.3.1")
-    implementation("com.google.firebase:firebase-database:20.3.1")
+    implementation ("com.google.firebase:firebase-bom:33.1.0")
+    implementation ("com.google.firebase:firebase-analytics-ktx:22.0.1")
+    implementation("com.google.firebase:firebase-auth:23.0.0")
+    implementation("com.google.firebase:firebase-database:21.0.0")
+    implementation ("com.google.firebase:firebase-firestore:25.0.0")
     implementation ("com.firebaseui:firebase-ui-database:8.0.2")
 }

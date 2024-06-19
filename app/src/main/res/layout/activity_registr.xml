@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".RegistrActivity">
+
     <EditText
         android:id="@+id/Email_et"
         android:layout_width="242dp"
@@ -16,6 +17,8 @@
         android:fontFamily="@font/ubuntu_light"
         android:hint="Email"
         android:inputType="text"
+        android:textColor="#000000"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Login_title" />
 
@@ -29,6 +32,8 @@
         android:fontFamily="@font/ubuntu_light"
         android:hint="Username"
         android:inputType="text"
+        android:textColor="#000000"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Login_title" />
 
@@ -42,6 +47,8 @@
         android:fontFamily="@font/ubuntu_light"
         android:hint="Password"
         android:inputType="text"
+        android:textColor="#000000"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/user_name_et" />
 
@@ -52,7 +59,9 @@
         android:layout_marginStart="52dp"
         android:fontFamily="@font/ubuntu_medium"
         android:text="Sign up"
+        android:textColor="#000000"
         android:textSize="30sp"
+        android:textStyle="normal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -71,18 +80,21 @@
         app:layout_constraintVertical_bias="0.179"
         app:srcCompat="@drawable/image_login" />
 
+
     <Button
         android:id="@+id/Sign_up_btn"
         android:layout_width="268dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="56dp"
         android:backgroundTint="@color/caral"
-        android:layout_marginTop="40dp"
-        android:fontFamily="@font/ubuntu_light"
+        android:fontFamily="sans-serif-black"
         android:text="Sign up"
+        android:textColor="#FFFFFF"
+        android:textColorLink="#000000"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Password_et" />
-
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
         android:id="@+id/back_btn"
