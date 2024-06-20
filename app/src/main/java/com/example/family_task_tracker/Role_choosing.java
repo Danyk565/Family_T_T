@@ -7,6 +7,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.UserInfo;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -82,6 +83,7 @@ public class Role_choosing extends RegistrActivity {
                                     userInfo.put("email", user.email);
                                     userInfo.put("username", user.username);
                                     userInfo.put("role", user.role);
+                                    userInfo.put("tasks","tasks");
                                     FirebaseDatabase.getInstance().getReference().child("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                             .setValue(userInfo);
                                     if(user.role =="Parent"){
