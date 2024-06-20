@@ -72,6 +72,7 @@
         android:fontFamily="@font/ubuntu_light"
         android:text="Login"
         android:textColor="#FFFFFF"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

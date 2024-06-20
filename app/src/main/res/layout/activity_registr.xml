@@ -85,15 +85,17 @@
         android:id="@+id/Sign_up_btn"
         android:layout_width="268dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="56dp"
+        android:layout_marginBottom="124dp"
         android:backgroundTint="@color/caral"
-        android:fontFamily="sans-serif-black"
+        android:fontFamily="@font/ubuntu_light"
         android:text="Sign up"
         android:textColor="#FFFFFF"
         android:textColorLink="#000000"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton

@@ -15,8 +15,17 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 
 public class LoginActivity extends AppCompatActivity {
+    private FirebaseAuth mAuth;
+    private DatabaseReference mRef;
 
     private ActivityLoginBinding binding;
     Button login;
@@ -24,12 +33,36 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mAuth = FirebaseAuth.getInstance();
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setContentView(R.layout.activity_login);
         login =findViewById(R.id.login_btn);
         log=findViewById(R.id.email_et);
         pas=findViewById(R.id.password_et);
+
+        mRef = FirebaseDatabase.getInstance().getReference();
+        FirebaseUser User = mAuth.getInstance().getCurrentUser();
+       /* if(User!=null){
+            mRef.child("users").child(User.getUid()).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    String role = snapshot.child("role").getValue(String.class);
+                    if(role=="Parent"){
+                        startActivity(new Intent(LoginActivity.this,Parent_account.class));
+                    } else if (role=="Child") {
+                        startActivity(new Intent(LoginActivity.this,Child_account.class));
+
+                    }
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+        }*/
+
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,7 +76,23 @@ public class LoginActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if(task.isSuccessful()){
-                                        startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                                        mRef.child("users").child(User.getUid()).child("role").addValueEventListener(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                String role = snapshot.getValue(String.class).toString();
+                                                if(role.equals("Parent")){
+                                                    startActivity(new Intent(LoginActivity.this,Parent_account.class));
+                                                } else if (role.equals("Child")) {
+                                                    startActivity(new Intent(LoginActivity.this,Child_account.class));
+                                                }
+                                            }
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError error) {
+
+                                            }
+                                        });
+                                        //FirebaseUser User = mAuth.getCurrentUser();
+
                                     }
                                     else
                                         Toast.makeText(getApplicationContext(),"Invalid user data", Toast.LENGTH_SHORT).show();

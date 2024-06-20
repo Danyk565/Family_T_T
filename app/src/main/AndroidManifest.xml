@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -15,6 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Family_Task_Tracker"
         tools:targetApi="31">
+        <activity
+            android:name=".Entering_bonus_task"
+            android:exported="false"
+           android:theme="@style/Entering_bonus"
+            />
         <activity
             android:name=".Child_account"
             android:exported="false" />

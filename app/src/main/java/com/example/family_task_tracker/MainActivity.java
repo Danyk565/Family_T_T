@@ -26,43 +26,24 @@ public class MainActivity extends AppCompatActivity {
             Log.d(TAG, "User is not logged in, redirecting to LoginActivity");
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
             finish();
-        } else {
-            String userId = auth.getCurrentUser().getUid();
-            FirebaseFirestore db = FirebaseFirestore.getInstance();
+        }
+            else{
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+           /* private boolean isLoggedIn() {
+                SharedPreferences sharedPreferences = PreferenceManager
+                        .getDefaultSharedPreferences(this);
+                //The false represents the default value, if the variable is not stored
+                boolean isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false);
+                return isLoggedIn;
+            }
 
-            db.collection("users").document(userId).get().addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document != null && document.exists()) {
-                        String role = document.getString("role");
-                        Log.d(TAG, "User role: " + role);
-
-                        if ("Parent".equals(role != null ? role.trim() : "")) {
-                            Intent intent = new Intent(MainActivity.this, Parent_account.class);
-                            startActivity(intent);
-                            finish();
-                        }
-                        //else if ("Child".equals(role != null ? role.trim() : "")) {
-                            //Intent intent = new Intent(MainActivity.this, Child_activity.class);
-                            //startActivity(intent);
-                            //finish();
-                        //}
-                    else {
-                            Log.w(TAG, "Unknown role, redirecting back to LoginActivity");
-                            startActivity(new Intent(MainActivity.this, LoginActivity.class));
-                            finish();
-                        }
-                    } else {
-                        Log.w(TAG, "Document does not exist");
-                        startActivity(new Intent(MainActivity.this, LoginActivity.class));
-                        finish();
-                    }
-                } else {
-                    Log.e(TAG, "Failed to get user role", task.getException());
-                    startActivity(new Intent(MainActivity.this, LoginActivity.class));
-                    finish();
-                }
-            });
+            private void saveLoggedIn(boolean value) {
+                SharedPreferences sharedPreferences = PreferenceManager
+                        .getDefaultSharedPreferences(this);
+                Editor editor = sharedPreferences.edit();
+                editor.putBoolean("isLoggedIn", value);
+                editor.commit();
+            }*/
+            }
         }
     }
-}
