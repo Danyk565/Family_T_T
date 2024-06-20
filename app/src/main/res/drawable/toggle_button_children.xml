@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="false" android:drawable="@drawable/kandinsky_download_1718920492126_photoaidcom_cropped" />
+    <item android:state_checked="true" android:drawable="@drawable/__2024_06_21_010144_photoaidcom_cropped__1_" />
+</selector>

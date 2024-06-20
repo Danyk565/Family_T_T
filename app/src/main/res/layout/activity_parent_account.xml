@@ -149,19 +149,19 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginStart="60dp"
-            android:layout_marginTop="196dp"
+            android:layout_marginTop="164dp"
             android:background="@color/white"
             android:cropToPadding="false"
             android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/zadac" />
+            app:srcCompat="@drawable/__2024_06_20_234352" />
 
         <ImageButton
             android:id="@+id/raz_zadachi_btn"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginTop="196dp"
+            android:layout_marginTop="164dp"
             android:layout_marginEnd="60dp"
             android:background="#FFFFFF"
             android:cropToPadding="false"
@@ -211,7 +211,7 @@
             android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/zadachi_btn"
-            app:srcCompat="@drawable/celi" />
+            app:srcCompat="@drawable/__2024_06_21_000156" />
 
         <ImageButton
             android:id="@+id/marafon_btn"
@@ -224,7 +224,7 @@
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/raz_zadachi_btn"
-            app:srcCompat="@drawable/progress" />
+            app:srcCompat="@drawable/__2024_06_20_235417" />
 
         <TextView
             android:id="@+id/textView3"
