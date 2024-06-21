@@ -78,15 +78,17 @@ public class Entering_bonus_task extends AppCompatActivity {
                         }
                     };
                     timer.start();
-                    String key_name = mRef.child("users").child(User.getUid()).child("tasks").push().getKey();
-                    mRef.child("use// rs").child(User.getUid()).child("tasks").setValue(Name_task.getText().toString());
-                    Map<String, Object> task_map = new HashMap<>();
-                    task_map.put("tasks/name_task", Name_task.getText().toString());
+                    //String key_name = mRef.child("users").child(User.getUid()).child("tasks").push().getKey();
+                    //mRef.child("users").child(User.getUid()).child("tasks").setValue(Name_task.getText().toString());
+                    Map<String,Object> task_map = new HashMap<>();
+                    String str_Guid = String.valueOf(java.util.UUID.randomUUID());
+                    task_map.put("tasks/"+str_Guid+"/name_task", Name_task.getText().toString());
+                    task_map.put("tasks/"+str_Guid+"/condition", Task_control.getText().toString());
                     UserRef.updateChildren(task_map);
-                    Map<String, Object> task_condition = new HashMap<>();
-                    task_map.put("name_task/condition", Task_control.getText().toString());
-                    UserRef.child("tasks").updateChildren(task_condition);
-                    //finish();
+                    //Map<String,Object> task_condition = new HashMap<>();
+
+                    // UserRef.updateChildren(task_condition);
+                    finish();
                 }
             }
         });
