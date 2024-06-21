@@ -38,8 +38,9 @@ Intent intent_transition = new Intent(RegistrActivity.this,LoginActivity.class);
                 User user = new User(EmailEt.getText().toString(),UserNameEt.getText().toString(),"", PasswordEt.getText().toString());
                 if(EmailEt.getText().toString().isEmpty() || PasswordEt.getText().toString().isEmpty() || UserNameEt.getText().toString().isEmpty()){
                     Toast.makeText(getApplicationContext(),"Fields cannot be empty", Toast.LENGTH_SHORT).show();
-                }
-                else
+                } else if (PasswordEt.length() < 8) {
+                    Toast.makeText(getApplicationContext(),"Password should be 8 symbols or more", Toast.LENGTH_SHORT).show();
+                } else
                 {
                     Intent intent_role = new Intent(RegistrActivity.this,Role_choosing.class);
                     intent_role.putExtra("User_Info",user);

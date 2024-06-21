@@ -15,6 +15,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 import android.widget.CompoundButton;
 ;
@@ -66,7 +67,10 @@ public class Role_choosing extends RegistrActivity {
                 boolean on_parent = parent_btn.isChecked();
                 boolean on_child = child_btn.isChecked();
                 Intent Role = new Intent(Role_choosing.this, RegistrActivity.class);
-                if(on_parent){
+                if(!on_child&&!on_parent){
+                    Toast.makeText(getApplicationContext(),"Choose the role", Toast.LENGTH_SHORT).show();
+                }
+                else if (on_parent){
                     user.role = "Parent";
                     //child_btn.setEnabled(false);
                 }
