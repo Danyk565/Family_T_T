@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.view.View;
+import android.os.CountDownTimer;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.example.family_task_tracker.User;
@@ -17,6 +18,7 @@ import com.example.family_task_tracker.databinding.ActivityRegistrBinding;
 
 public class RegistrActivity extends AppCompatActivity  {
     private ActivityRegistrBinding binding;
+
     public void onClick_back(View v){
 Intent intent_transition = new Intent(RegistrActivity.this,LoginActivity.class);
         startActivity(intent_transition);
