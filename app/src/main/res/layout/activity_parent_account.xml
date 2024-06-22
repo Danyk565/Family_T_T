@@ -156,20 +156,22 @@
             app:layout_constraintHorizontal_bias="0.192"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/progressBar"
-            app:layout_constraintVertical_bias="0.252"
+            app:layout_constraintVertical_bias="0.23000002"
             app:srcCompat="@drawable/__2024_06_20_234352" />
 
         <ImageButton
             android:id="@+id/raz_zadachi_btn"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginTop="164dp"
-            android:layout_marginEnd="60dp"
             android:background="#FFFFFF"
             android:cropToPadding="false"
             android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.848"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progressBar"
+            app:layout_constraintVertical_bias="0.23000002"
             app:srcCompat="@drawable/plus2" />
 
         <TextView
@@ -206,27 +208,28 @@
             android:id="@+id/celi_btn"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginStart="60dp"
             android:background="#FFFFFF"
             android:cropToPadding="false"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/progressBar"
-            app:layout_constraintVertical_bias="0.63"
+            app:layout_constraintEnd_toEndOf="@+id/daily_tasks_btn"
+            app:layout_constraintStart_toStartOf="@+id/daily_tasks_btn"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            app:layout_constraintVertical_bias="0.13999999"
             app:srcCompat="@drawable/__2024_06_21_000156" />
 
         <ImageButton
             android:id="@+id/marafon_btn"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="60dp"
             android:background="#FFFFFF"
             android:cropToPadding="false"
             android:scaleType="centerCrop"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/raz_zadachi_btn"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/raz_zadachi_btn"
+            app:layout_constraintStart_toStartOf="@+id/raz_zadachi_btn"
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            app:layout_constraintVertical_bias="0.13"
             app:srcCompat="@drawable/__2024_06_20_235417" />
 
         <TextView
@@ -234,23 +237,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ежедневные задачи"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.173"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.505" />
+            android:textColor="#000000"
+            app:layout_constraintEnd_toEndOf="@+id/daily_tasks_btn"
+            app:layout_constraintStart_toStartOf="@+id/daily_tasks_btn"
+            app:layout_constraintTop_toBottomOf="@+id/daily_tasks_btn" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="92dp"
             android:text="Разовые задачи"
+            android:textColor="#000000"
             app:layout_constraintEnd_toEndOf="@+id/raz_zadachi_btn"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/raz_zadachi_btn"
-            app:layout_constraintTop_toTopOf="@+id/raz_zadachi_btn" />
+            app:layout_constraintTop_toBottomOf="@+id/raz_zadachi_btn" />
 
         <TextView
             android:id="@+id/textView5"
@@ -258,6 +258,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="92dp"
             android:text="Цели"
+            android:textColor="#000000"
             app:layout_constraintEnd_toEndOf="@+id/celi_btn"
             app:layout_constraintStart_toStartOf="@+id/celi_btn"
             app:layout_constraintTop_toTopOf="@+id/celi_btn" />
@@ -268,6 +269,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="92dp"
             android:text="Марафон"
+            android:textColor="#000000"
             app:layout_constraintEnd_toEndOf="@+id/marafon_btn"
             app:layout_constraintHorizontal_bias="0.526"
             app:layout_constraintStart_toStartOf="@+id/marafon_btn"
