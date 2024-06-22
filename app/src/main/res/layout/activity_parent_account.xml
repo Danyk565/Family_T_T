@@ -145,16 +145,18 @@
         app:layout_constraintVertical_bias="1.0">
 
         <ImageButton
-            android:id="@+id/zadachi_btn"
+            android:id="@+id/daily_tasks_btn"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="164dp"
             android:background="@color/white"
             android:cropToPadding="false"
             android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.192"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progressBar"
+            app:layout_constraintVertical_bias="0.252"
             app:srcCompat="@drawable/__2024_06_20_234352" />
 
         <ImageButton
@@ -205,12 +207,13 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginStart="60dp"
-            android:layout_marginTop="32dp"
             android:background="#FFFFFF"
             android:cropToPadding="false"
             android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/zadachi_btn"
+            app:layout_constraintTop_toBottomOf="@+id/progressBar"
+            app:layout_constraintVertical_bias="0.63"
             app:srcCompat="@drawable/__2024_06_21_000156" />
 
         <ImageButton
@@ -230,12 +233,13 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="92dp"
             android:text="Ежедневные задачи"
-            app:layout_constraintEnd_toEndOf="@+id/zadachi_btn"
-            app:layout_constraintHorizontal_bias="0.4"
-            app:layout_constraintStart_toStartOf="@+id/zadachi_btn"
-            app:layout_constraintTop_toTopOf="@+id/zadachi_btn" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.173"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.505" />
 
         <TextView
             android:id="@+id/textView4"
