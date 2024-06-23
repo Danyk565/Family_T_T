@@ -16,9 +16,12 @@
         android:theme="@style/Theme.Family_Task_Tracker"
         tools:targetApi="31">
         <activity
+            android:name=".Link_parent"
+            android:exported="false" />
+        <activity
             android:name=".Entering_daily_tasks"
             android:exported="false"
-            android:theme="@style/Daily_tasks"/>
+            android:theme="@style/Daily_tasks" />
         <activity
             android:name=".Entering_bonus_task"
             android:exported="false"
