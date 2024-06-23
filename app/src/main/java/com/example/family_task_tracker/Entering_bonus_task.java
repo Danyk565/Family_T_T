@@ -7,12 +7,16 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.NumberPicker;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -30,7 +34,6 @@ public class Entering_bonus_task extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference mRef;
     private TextView textView;
-    private EditText editTextTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +42,19 @@ public class Entering_bonus_task extends AppCompatActivity {
         getWindowManager().getDefaultDisplay().getMetrics(bt);
         int width = bt.widthPixels;
         int height = bt.heightPixels;
-        getWindow().setLayout((int) (width * .8), (int) (height * .7));
-        textView = findViewById(R.id.textView10);
-        editTextTime = findViewById(R.id.editTextTime);
+        //NumberPicker hours,minutes,seconds;
+        getWindow().setLayout((int) (width * .85), (int) (height * .8));
+        getSupportActionBar().hide();
+        //textView = findViewById(R.id.textView10);
+        NumberPicker hours = findViewById(R.id.Pickerhours);
+        hours.setMinValue(0);
+        hours.setMaxValue(23);
+        NumberPicker minutes = findViewById(R.id.pickerminutes);
+        minutes.setMinValue(0);
+        minutes.setMaxValue(59);
+        NumberPicker seconds = findViewById(R.id.Pickerseconds);
+        seconds.setMinValue(0);
+        seconds.setMaxValue(59);
 
         WindowManager.LayoutParams params = getWindow().getAttributes();
         params.gravity = Gravity.CENTER;
@@ -53,7 +66,30 @@ public class Entering_bonus_task extends AppCompatActivity {
         Button upload_task = findViewById(R.id.upload_task);
         EditText Name_task = findViewById(R.id.Name_task);
         EditText Task_control = findViewById(R.id.Task_conditions);
-
+        Switch switch1 = findViewById(R.id.switch1);
+        if (switch1.isChecked()) {
+            hours.setVisibility(View.VISIBLE);
+            minutes.setVisibility(View.VISIBLE);
+            seconds.setVisibility(View.VISIBLE);
+        } else {
+            hours.setVisibility(View.INVISIBLE);
+            minutes.setVisibility(View.INVISIBLE);
+            seconds.setVisibility(View.INVISIBLE);
+        }
+        switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    hours.setVisibility(View.VISIBLE);
+                    minutes.setVisibility(View.VISIBLE);
+                    seconds.setVisibility(View.VISIBLE);
+                } else {
+                    hours.setVisibility(View.INVISIBLE);
+                    minutes.setVisibility(View.INVISIBLE);
+                    seconds.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
         mRef = FirebaseDatabase.getInstance().getReference();
@@ -65,11 +101,13 @@ public class Entering_bonus_task extends AppCompatActivity {
                 if (Name_task.getText().toString().isEmpty() || Task_control.getText().toString().isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Fields cannot be empty", Toast.LENGTH_SHORT).show();
                 } else {
-                    long seconds = Long.parseLong(editTextTime.getEditableText().toString());
-                    CountDownTimer timer = new CountDownTimer(seconds * 1000, 1000) {
+                    long tseconds = (long) seconds.getValue();
+                    long tminutes = (long) minutes.getValue();
+                    long thours = (long) hours.getValue();
+                    CountDownTimer timer = new CountDownTimer(((thours*3600000)+(tminutes*60000)+(tseconds * 1000)), 1000) {
                         @Override
                         public void onTick(long millisUntilFinished) {
-                            textView.setText(String.format(Locale.getDefault(), "%d", millisUntilFinished / 1000));
+                            //textView.setText(String.format(Locale.getDefault(), "%d", millisUntilFinished / 1000));
                         }
 
                         @Override
@@ -88,7 +126,7 @@ public class Entering_bonus_task extends AppCompatActivity {
                     //Map<String,Object> task_condition = new HashMap<>();
 
                     // UserRef.updateChildren(task_condition);
-                    finish();
+                    //finish();
                 }
             }
         });

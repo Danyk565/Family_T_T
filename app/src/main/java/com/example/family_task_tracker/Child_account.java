@@ -23,7 +23,7 @@ public class Child_account extends AppCompatActivity {
         link_parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            startActivity(new Intent(Child_account.this, Link_parent.class));
+                startActivity(new Intent(Child_account.this, Link_parent.class));
             }
         });
         // начальная инициализация списка
@@ -41,6 +41,9 @@ public class Child_account extends AppCompatActivity {
         task.add(new Tasks ("Колумбия", "Богота", 400));
         task.add(new Tasks ("Уругвай", "Монтевидео", 200));
         task.add(new Tasks ("Чили", "Сантьяго", 600));
+    }
     }*/
     }
 }
+
+

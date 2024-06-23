@@ -5,60 +5,158 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
+    android:background="@drawable/stroke"
+    android:backgroundTint="#000000"
+    android:backgroundTintMode="add"
     tools:context=".Entering_bonus_task">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="269dp"
+        android:layout_height="45dp"
+        android:background="@drawable/danil_loh"
+        app:layout_constraintBottom_toBottomOf="@+id/Name_task"
+        app:layout_constraintEnd_toEndOf="@+id/Name_task"
+        app:layout_constraintStart_toStartOf="@+id/Name_task"
+        app:layout_constraintTop_toTopOf="@+id/Name_task" />
 
     <Button
         android:id="@+id/upload_task"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
+        android:layout_width="246dp"
+        android:layout_height="38dp"
+        android:background="@drawable/circle"
+        android:text="UPLOAD"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.783" />
+        app:layout_constraintVertical_bias="0.92" />
 
     <EditText
         android:id="@+id/Name_task"
-        android:layout_width="269dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="250dp"
+        android:layout_height="45dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:hint="NameTask"
+        android:textColor="#000000"
+        android:textColorHint="#939393"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.053" />
 
     <EditText
         android:id="@+id/Task_conditions"
         android:layout_width="269dp"
-        android:layout_height="131dp"
+        android:layout_height="45dp"
+        android:backgroundTint="#000000"
+        android:backgroundTintMode="src_in"
+        android:hint="Task Conditionds"
+        android:textColor="#050505"
+        android:textColorHint="#939393"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.165" />
+        app:layout_constraintVertical_bias="0.13999999" />
+
+    <NumberPicker
+        android:id="@+id/Pickerhours"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.Picker"
+        app:layout_constraintBottom_toBottomOf="@+id/pickerminutes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.204"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/pickerminutes" />
+
+    <NumberPicker
+        android:id="@+id/pickerminutes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.Picker"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.56" />
+
+    <NumberPicker
+        android:id="@+id/Pickerseconds"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.Picker"
+        app:layout_constraintBottom_toBottomOf="@+id/pickerminutes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/pickerminutes" />
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/arimo"
+        android:text="Time limit"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:theme="@style/SCBSwitch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Task_conditions" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="156dp"
+        android:layout_height="45dp"
+        android:background="@drawable/danil_loh"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextNumber2"
+        app:layout_constraintEnd_toEndOf="@+id/editTextNumber2"
+        app:layout_constraintStart_toStartOf="@+id/editTextNumber2"
+        app:layout_constraintTop_toTopOf="@+id/editTextNumber2" />
 
     <EditText
-        android:id="@+id/editTextTime"
-        android:layout_width="269dp"
-        android:layout_height="38dp"
+        android:id="@+id/editTextNumber2"
+        android:layout_width="156dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="4dp"
         android:ems="10"
-        android:inputType="time"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.375" />
+        android:gravity="center_horizontal|center_vertical"
+        android:inputType="number"
+        android:textColor="#000000"
+        android:textColorHighlight="#000000"
+        app:layout_constraintEnd_toEndOf="@+id/textView7"
+        app:layout_constraintStart_toStartOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <TextView
-        android:id="@+id/textView10"
-        android:layout_width="100dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="16dp"
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/arimo"
+        android:text="Enter the reward"
+        android:textColor="#000000"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.756"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTime" />
+        app:layout_constraintTop_toBottomOf="@+id/pickerminutes" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/image_login"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintEnd_toStartOf="@+id/imageView4"
+        app:layout_constraintTop_toTopOf="@+id/imageView4"
+        app:layout_constraintVertical_bias="0.25" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
