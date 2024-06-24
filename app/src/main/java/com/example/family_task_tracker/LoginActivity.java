@@ -2,9 +2,13 @@ package com.example.family_task_tracker;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +25,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -41,27 +51,32 @@ public class LoginActivity extends AppCompatActivity {
         log=findViewById(R.id.email_et);
         pas=findViewById(R.id.password_et);
 
+
+
+
         mRef = FirebaseDatabase.getInstance().getReference();
         FirebaseUser User = mAuth.getInstance().getCurrentUser();
-       /* if(User!=null){
-            mRef.child("users").child(User.getUid()).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    String role = snapshot.child("role").getValue(String.class);
-                    if(role=="Parent"){
-                        startActivity(new Intent(LoginActivity.this,Parent_account.class));
-                    } else if (role=="Child") {
-                        startActivity(new Intent(LoginActivity.this,Child_account.class));
+        /*final String[] Role_for_update = {""};
+        final String[] Parent = {""};
+        mRef.child("users").child(User.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Role_for_update[0] = snapshot.child("role").getValue(String.class).toString();
+              //  Parent[0] = snapshot.child("parent").getValue(String.class).toString();
+            }
 
-                    }
-                }
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-                }
-            });
+            }
+        });*/
 
-        }*/
+
+
+
+
+
+
 
 
         login.setOnClickListener(new View.OnClickListener() {
@@ -83,7 +98,59 @@ public class LoginActivity extends AppCompatActivity {
                                                 if(role.equals("Parent")){
                                                     startActivity(new Intent(LoginActivity.this,Parent_account.class));
                                                 } else if (role.equals("Child")) {
-                                                    startActivity(new Intent(LoginActivity.this,Child_account.class));
+                                                    mRef.child("users").child(User.getUid()).child("parent").addValueEventListener(new ValueEventListener() {
+                                                        @Override
+                                                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                                            String parentUid = dataSnapshot.getValue(String.class);
+                                                            DatabaseReference ParentRef_bonus_tasks = mRef.child("users").child(parentUid).child("tasks").child("bonus_tasks");
+                                                            ParentRef_bonus_tasks.addValueEventListener(new ValueEventListener() {
+                                                                @Override
+                                                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                                                    List<Bonus_Tasks> taskList = new ArrayList<>();
+                                                                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                                                        Bonus_Tasks task = new Bonus_Tasks();
+                                                                        task.Uid = snapshot.getKey();
+                                                                        for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                                                                            String Key = childSnapshot.getKey();
+                                                                            if(Key.equals("condition")){
+                                                                            task.Task_conditions = childSnapshot.getValue(String.class);}
+                                                                            if(Key.equals("name_task"))
+                                                                            task.Name_task =childSnapshot.getValue(String.class);
+                                                                            if(Key.equals("scores"))
+                                                                            task.scores = childSnapshot.getValue(String.class);
+
+                                                                        }
+                                                                        taskList.add(task);
+                                                                    }
+
+                                                                    // Создаем адаптер и устанавливаем его для RecyclerView
+                                                                    //TasksAdapter adapter = new TasksAdapter(taskList);
+                                                                   /* if (recyclerView != null) {
+                                                                        // Создание LayoutManager для RecyclerView
+                                                                        LinearLayoutManager layoutManager = new LinearLayoutManager(LoginActivity.this);
+                                                                        recyclerView.setLayoutManager(layoutManager);
+
+                                                                        recyclerView.setAdapter(adapter);
+                                                                    }*/
+                                                                    Intent List = new Intent(LoginActivity.this, Child_account.class);
+                                                                    List.putParcelableArrayListExtra("bonusTasksList", (ArrayList<? extends Parcelable>) taskList);
+                                                                    startActivity(List);
+                                                                }
+
+                                                                @Override
+                                                                public void onCancelled(DatabaseError databaseError) {
+                                                                    // Обработка ошибок при чтении данных из базы данных
+                                                                }
+                                                            });
+                                                        }
+
+                                                        @Override
+                                                        public void onCancelled(DatabaseError databaseError) {
+                                                            // Обработка ошибок
+                                                        }
+                                                    });
+
+
                                                 }
                                             }
                                             @Override

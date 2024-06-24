@@ -7,6 +7,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -41,6 +42,7 @@ public class Role_choosing extends RegistrActivity {
         ToggleButton child_btn = (ToggleButton) findViewById(R.id.child_btn);// Кнопка для выбора роли ребёнка
         MyRef = FirebaseDatabase.getInstance().getReference();
         Button RoleChoose = findViewById(R.id.role_choose_btn);
+        FirebaseUser User = FirebaseAuth.getInstance().getCurrentUser();
 
         child_btn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

@@ -1,30 +1,43 @@
 package com.example.family_task_tracker;
 
+import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 
 public class Bonus_Tasks implements Parcelable  {
     public static String Name_task;
     public static String Task_conditions;
     public static boolean Task_control;
+    public static String Uid;
+    public static String  scores;
 
-    public Bonus_Tasks(String Name_task, String Task_conditions, boolean Task_control){
+    public Bonus_Tasks(String Name_task, String Task_conditions, boolean Task_control, String Uid, String scores){
         this.Name_task = Name_task;
         this.Task_conditions = Task_conditions;
         this.Task_control = Task_control;
+        this.Uid = Uid;
+        this.scores = scores;
     }
+
     public Bonus_Tasks(){};
+    @RequiresApi(api = Build.VERSION_CODES.Q)
     protected Bonus_Tasks(Parcel in) {
         Name_task = in.readString();
         Task_conditions = in.readString();
         Task_control = in.readBoolean();
+        Uid = in.readString();
+        scores = in.readString();
     }
     public static final Creator<Bonus_Tasks> CREATOR = new Creator<Bonus_Tasks>() {
         @Override
         public Bonus_Tasks createFromParcel(Parcel in) {
-            return new Bonus_Tasks(in);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                return new Bonus_Tasks(in);
+            }
+            return null;
         }
 
         @Override
@@ -32,6 +45,21 @@ public class Bonus_Tasks implements Parcelable  {
             return new Bonus_Tasks[size];
         }
     };
+    public static String getUid() {
+        return Uid;
+    }
+
+    public static String getScores() {
+        return scores;
+    }
+
+    public static void setScores(String scores) {
+        Bonus_Tasks.scores = scores;
+    }
+
+    public static void setUid(String uid) {
+        Uid = uid;
+    }
 
     public static String getName_task() {
         return Name_task;
@@ -62,6 +90,7 @@ public class Bonus_Tasks implements Parcelable  {
         return 0;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeString(Name_task);

@@ -56,9 +56,14 @@ public class Link_parent extends AppCompatActivity {
                             for (DataSnapshot userSnapshot : snapshot.getChildren()) {
                                  parentUID = userSnapshot.getKey().toString();
                             }
+                            DatabaseReference ParentRef = mRef.child("users").child(parentUID);
                             Map<String,Object> parent_map = new HashMap<>();
-                            parent_map.put("parent",parentUID);
-                            UserRef.updateChildren(parent_map);
+                            ParentRef.child("room/"+"/parent/").setValue(parentUID);
+                            ParentRef.child("room/"+"/child/").setValue(User.getUid());
+                            UserRef.child("parent").setValue(parentUID);
+                            /*parent_map.put("users/"+parentUID+"/room/"+"/child",User.getUid());
+                            parent_map.put("users/"+parentUID+"/room/"+"/child", parentUID);
+                            UserRef.updateChildren(parent_map);*/
                             finish();
                         }
                     }
