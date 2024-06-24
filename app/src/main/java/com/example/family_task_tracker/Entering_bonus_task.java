@@ -1,5 +1,6 @@
 package com.example.family_task_tracker;
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.DisplayMetrics;
@@ -9,6 +10,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.NumberPicker;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -34,6 +36,7 @@ public class Entering_bonus_task extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference mRef;
     private TextView textView;
+    private ImageButton finish;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,7 @@ public class Entering_bonus_task extends AppCompatActivity {
         int width = bt.widthPixels;
         int height = bt.heightPixels;
         //NumberPicker hours,minutes,seconds;
+        getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         getWindow().setLayout((int) (width * .85), (int) (height * .8));
         getSupportActionBar().hide();
         //textView = findViewById(R.id.textView10);
@@ -62,7 +66,7 @@ public class Entering_bonus_task extends AppCompatActivity {
         params.y = -20;
         getWindow().setAttributes(params);
 
-
+        ImageButton finish= findViewById(R.id.ebt_finish);
         Button upload_task = findViewById(R.id.upload_task);
         EditText Name_task = findViewById(R.id.Name_task);
         EditText Task_control = findViewById(R.id.Task_conditions);
@@ -135,6 +139,12 @@ public class Entering_bonus_task extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+        finish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
         });
     }
 }
