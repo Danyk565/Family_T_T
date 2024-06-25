@@ -19,14 +19,17 @@ public class Child_account extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_child_account);
         ImageButton link_parent = findViewById(R.id.link_parent_btn);
-        RecyclerView recyclerView = findViewById(R.id.tasks_list_rv);
-        Intent intent = getIntent();
-        ArrayList<Bonus_Tasks> receivedList = (ArrayList<Bonus_Tasks>) intent.getSerializableExtra("bonusTasksList");
-        if (receivedList != null) {
-            TasksAdapter adapter = new TasksAdapter(receivedList);
-            recyclerView.setAdapter(adapter);
-            // Используйте полученный список объектов Bonus_Tasks
-        }
+        RecyclerView List = findViewById(R.id.tasks_list_rv);
+        //Intent intent = getIntent();
+        //ArrayList<Bonus_Tasks> receivedList = (ArrayList<Bonus_Tasks>) intent.getSerializableExtra("bonusTasksList");
+        //String s=receivedList.get(0).Name_task;
+       //if (receivedList != null) {
+
+        ArrayList<Bonus_Tasks> receivedList = getIntent().getParcelableArrayListExtra("bonusTasksList");
+        String s=receivedList.get(0).Name_task;
+            TasksAdapter adapter = new TasksAdapter( receivedList, this);
+            List.setAdapter(adapter);
+        //}
 
         link_parent.setOnClickListener(new View.OnClickListener() {
             @Override

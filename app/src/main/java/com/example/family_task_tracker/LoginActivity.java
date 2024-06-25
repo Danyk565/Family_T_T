@@ -114,12 +114,16 @@ public class LoginActivity extends AppCompatActivity {
                                                                             String Key = childSnapshot.getKey();
                                                                             if(Key.equals("condition")){
                                                                             task.Task_conditions = childSnapshot.getValue(String.class);}
-                                                                            if(Key.equals("name_task"))
-                                                                            task.Name_task =childSnapshot.getValue(String.class);
-                                                                            if(Key.equals("scores"))
-                                                                            task.scores = childSnapshot.getValue(String.class);
+                                                                            if(Key.equals("name_task")){
+                                                                            task.Name_task =childSnapshot.getValue(String.class);}
+                                                                            if(Key.equals("scores")){
+                                                                            task.scores = childSnapshot.getValue(String.class);}
 
                                                                         }
+                                                                        if (task.scores==null){
+                                                                            task.scores="0";
+                                                                        }
+                                                                        task.Task_control=false;
                                                                         taskList.add(task);
                                                                     }
 

@@ -96,5 +96,7 @@ public class Bonus_Tasks implements Parcelable  {
         dest.writeString(Name_task);
         dest.writeString(Task_conditions);
         dest.writeBoolean(Task_control);
+        dest.writeString(Uid);
+        dest.writeString(scores);
     }
 }

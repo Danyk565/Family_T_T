@@ -9,34 +9,28 @@
         android:id="@+id/NAme"
         android:layout_width="129dp"
         android:layout_height="42dp"
-        app:layout_constraintBottom_toBottomOf="@+id/Task_button"
-        app:layout_constraintEnd_toEndOf="@+id/Task_button"
-        app:layout_constraintHorizontal_bias="0.056"
+
+
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="689dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/Conditions"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/Task_button" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
         android:id="@+id/Conditions"
         android:layout_width="222dp"
         android:layout_height="46dp"
-        app:layout_constraintBottom_toBottomOf="@+id/Task_button"
+        android:layout_marginBottom="685dp"
+
+        android:text="asdf"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/NAme"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/Task_button"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginBottom="591dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

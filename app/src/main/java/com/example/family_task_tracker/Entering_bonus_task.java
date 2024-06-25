@@ -70,6 +70,7 @@ public class Entering_bonus_task extends AppCompatActivity {
         Button upload_task = findViewById(R.id.upload_task);
         EditText Name_task = findViewById(R.id.Name_task);
         EditText Task_control = findViewById(R.id.Task_conditions);
+        EditText Scores = findViewById(R.id.scores_et);
         Switch switch1 = findViewById(R.id.switch1);
         if (switch1.isChecked()) {
             hours.setVisibility(View.VISIBLE);
@@ -105,6 +106,7 @@ public class Entering_bonus_task extends AppCompatActivity {
                 if (Name_task.getText().toString().isEmpty() || Task_control.getText().toString().isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Fields cannot be empty", Toast.LENGTH_SHORT).show();
                 } else {
+                    if(switch1.isChecked()){
                     long tseconds = (long) seconds.getValue();
                     long tminutes = (long) minutes.getValue();
                     long thours = (long) hours.getValue();
@@ -120,17 +122,21 @@ public class Entering_bonus_task extends AppCompatActivity {
                         }
                     };
                     timer.start();
+                    }
                     //String key_name = mRef.child("users").child(User.getUid()).child("tasks").push().getKey();
                     //mRef.child("users").child(User.getUid()).child("tasks").setValue(Name_task.getText().toString());
                     Map<String,Object> task_map = new HashMap<>();
                     String str_Guid = String.valueOf(java.util.UUID.randomUUID());
                     task_map.put("tasks/"+"bonus_tasks/"+str_Guid+"/name_task", Name_task.getText().toString());
                     task_map.put("tasks/"+"bonus_tasks/"+str_Guid+"/condition", Task_control.getText().toString());
+                    task_map.put("tasks/"+"bonus_tasks/"+str_Guid+"/scores", Scores.getText().toString());
+
+
                     UserRef.updateChildren(task_map);
                     //Map<String,Object> task_condition = new HashMap<>();
 
                     // UserRef.updateChildren(task_condition);
-                    //finish();
+                    finish();
                 }
             }
         });
