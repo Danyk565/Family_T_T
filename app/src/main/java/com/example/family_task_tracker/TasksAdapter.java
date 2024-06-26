@@ -2,10 +2,10 @@ package com.example.family_task_tracker;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,6 +16,7 @@ import java.util.List;
 
 public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.ViewHolder> {
     private final List<Bonus_Tasks> dataList;
+    private final List<Integer> drawableList;  // List of drawable resources
     private final LayoutInflater inflater;
     private final OnTaskClickListener listener;
     private final Context context;
@@ -24,8 +25,9 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.ViewHolder> 
         void onTaskClick(Bonus_Tasks task);
     }
 
-    public TasksAdapter(List<Bonus_Tasks> dataList, Context context, OnTaskClickListener listener) {
+    public TasksAdapter(List<Bonus_Tasks> dataList, List<Integer> drawableList, Context context, OnTaskClickListener listener) {
         this.dataList = dataList;
+        this.drawableList = drawableList;
         this.inflater = LayoutInflater.from(context);
         this.listener = listener;
         this.context = context;
@@ -44,9 +46,18 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.ViewHolder> 
         holder.textView1.setText(data.getName_task());
         holder.textView2.setText(data.getTask_conditions());
         holder.textView3.setText(data.getType());
+
+        // Set drawable image
+        if (data.getType().equals("bonus_tasks")) {
+            holder.imageView.setImageResource(drawableList.get(0));
+        } else if (data.getType().equals("daily_tasks")) {
+            holder.imageView.setImageResource(drawableList.get(1));
+        }
+
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, Text_task.class);
             intent.putExtra("taskName", data.getName_task());
+            intent.putIntegerArrayListExtra("drawableList", new ArrayList<>(drawableList));
             context.startActivity(intent);
         });
     }
@@ -60,13 +71,14 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.ViewHolder> 
         final TextView textView1;
         final TextView textView2;
         final TextView textView3;
+        final ImageView imageView;
 
         public ViewHolder(View itemView) {
             super(itemView);
             textView1 = itemView.findViewById(R.id.NAme);
             textView2 = itemView.findViewById(R.id.Conditions);
             textView3 = itemView.findViewById(R.id.Type_tv);
+            imageView = itemView.findViewById(R.id.imageView12);
         }
     }
 }
-

@@ -19,7 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Parent_account extends AppCompatActivity {
-    private int progress=40;
+    private int progress=0;
     private FirebaseAuth mAuth;
     private DatabaseReference mRef;
     @Override

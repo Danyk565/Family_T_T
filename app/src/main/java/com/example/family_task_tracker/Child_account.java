@@ -20,6 +20,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Child_account extends AppCompatActivity {
     private FirebaseAuth mAuth;
@@ -55,9 +57,16 @@ public class Child_account extends AppCompatActivity {
 
         ArrayList<Bonus_Tasks> receivedList = getIntent().getParcelableArrayListExtra("bonusTasksList");
         if (receivedList != null && !receivedList.isEmpty()) {
-            TasksAdapter adapter = new TasksAdapter(receivedList, this, task -> {
+            List<Integer> drawableList = new ArrayList<>();
+            drawableList.add(
+                    R.drawable.stroke2
+            );
+            drawableList.add(
+                    R.drawable.stroke3
+            );
+            TasksAdapter adapter = new TasksAdapter(receivedList, drawableList, this, task -> {
                 Intent intent = new Intent(Child_account.this, Text_task.class);
-                //intent.putExtra("selectedTask", task);
+                intent.putIntegerArrayListExtra("drawableList", new ArrayList<>(drawableList));
                 startActivity(intent);
             });
             list.setAdapter(adapter);
