@@ -22,6 +22,10 @@
         <activity
             android:name=".Link_parent"
             android:exported="false" />
+        <activity android:name=".Text_task"
+            android:exported="false"
+            android:theme="@style/Text_task" />
+
         <activity
             android:name=".Entering_daily_tasks"
             android:exported="false"

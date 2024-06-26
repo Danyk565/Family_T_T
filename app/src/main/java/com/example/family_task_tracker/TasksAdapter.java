@@ -1,11 +1,11 @@
 package com.example.family_task_tracker;
 
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,10 +14,16 @@ import java.util.List;
 public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.ViewHolder> {
     private final List<Bonus_Tasks> dataList;
     private final LayoutInflater inflater;
+    private final OnTaskClickListener listener;
 
-    public TasksAdapter(List<Bonus_Tasks> dataList, Context context) {
+    public interface OnTaskClickListener {
+        void onTaskClick(Bonus_Tasks task);
+    }
+
+    public TasksAdapter(List<Bonus_Tasks> dataList, Context context, OnTaskClickListener listener) {
         this.dataList = dataList;
         this.inflater = LayoutInflater.from(context);
+        this.listener = listener;
     }
 
     @NonNull
@@ -27,18 +33,13 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.ViewHolder> 
         return new ViewHolder(view);
     }
 
-
-
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Bonus_Tasks data = dataList.get(position);
-        String s  =data.getName_task();
         holder.textView1.setText(data.getName_task());
         holder.textView2.setText(data.getTask_conditions());
-        //holder.itemView.setOnClickListener(v -> listener.onTaskClick(data));
+        holder.itemView.setOnClickListener(v -> listener.onTaskClick(data));
     }
-
-
 
     @Override
     public int getItemCount() {
@@ -56,3 +57,4 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.ViewHolder> 
         }
     }
 }
+
