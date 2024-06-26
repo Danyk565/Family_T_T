@@ -5,12 +5,55 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".Link_parent">
+
+    <Button
+        android:id="@+id/save_parent_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/caral"
+        android:fontFamily="@font/ubuntu_light"
+        android:text="Продолжить"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.86" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Введите email родителя"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/parent_email_et"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="254dp"
+        android:layout_height="82dp"
+        app:layout_constraintBottom_toBottomOf="@+id/parent_email_et"
+        app:layout_constraintEnd_toEndOf="@+id/parent_email_et"
+        app:layout_constraintStart_toStartOf="@+id/parent_email_et"
+        app:layout_constraintTop_toTopOf="@+id/parent_email_et"
+        app:srcCompat="@drawable/danil_loh" />
 
     <EditText
         android:id="@+id/parent_email_et"
         android:layout_width="235dp"
         android:layout_height="65dp"
+        android:background="#FDFDFD"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,15 +62,5 @@
 
 
     </EditText>
-
-    <Button
-        android:id="@+id/save_parent_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

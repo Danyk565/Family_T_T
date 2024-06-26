@@ -3,6 +3,8 @@ package com.example.family_task_tracker;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.View;
+import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,12 +25,20 @@ public class Text_task extends AppCompatActivity {
         int width = bt.widthPixels;
         int height = bt.heightPixels;
         //NumberPicker hours,minutes,seconds;
+        ImageButton finish= findViewById(R.id.ebt_finish);
         getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         getWindow().setLayout((int) (width * .85), (int) (height * .8));
+        getSupportActionBar().hide();
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+        finish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
         });
     }
 }
