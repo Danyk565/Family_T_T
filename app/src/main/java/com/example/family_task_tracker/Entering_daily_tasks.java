@@ -2,7 +2,6 @@ package com.example.family_task_tracker;
 
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.View;
@@ -24,7 +23,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 public class Entering_daily_tasks extends AppCompatActivity {
@@ -62,7 +60,7 @@ public class Entering_daily_tasks extends AppCompatActivity {
 
         ImageButton finish= findViewById(R.id.ebt_finish);
         Button upload_daily_tasks_BT = findViewById(R.id.upload_task);
-        EditText Name_task = findViewById(R.id.Name_task);
+        EditText Name_task = findViewById(R.id.Name_marafon);
         EditText Task_control = findViewById(R.id.Task_conditions);
 
 

@@ -18,7 +18,6 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -29,7 +28,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 public class Entering_bonus_task extends AppCompatActivity {
@@ -68,7 +66,7 @@ public class Entering_bonus_task extends AppCompatActivity {
 
         ImageButton finish= findViewById(R.id.ebt_finish);
         Button upload_task = findViewById(R.id.upload_task);
-        EditText Name_task = findViewById(R.id.Name_task);
+        EditText Name_task = findViewById(R.id.Name_marafon);
         EditText Task_control = findViewById(R.id.Task_conditions);
         EditText Scores = findViewById(R.id.scores_et);
         Switch switch1 = findViewById(R.id.switch1);

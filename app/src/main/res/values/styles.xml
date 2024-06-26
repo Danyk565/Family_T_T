@@ -22,4 +22,9 @@
         <item name="colorControlActivated">@color/caral</item>
         <item name="colorSwitchThumbNormal">@color/caral</item>
     </style>
+    <style name="CustomProgressBar" parent="@android:style/Widget.ProgressBar.Horizontal">
+        <item name="android:progressBackgroundTint">@color/white</item>
+        <item name="android:progressTint">@color/caral</item>
+
+    </style>
     </resources>
