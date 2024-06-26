@@ -89,6 +89,7 @@ public class Role_choosing extends RegistrActivity {
                                     userInfo.put("email", user.email);
                                     userInfo.put("username", user.username);
                                     userInfo.put("role", user.role);
+                                    userInfo.put("parent", "0");
                                     FirebaseDatabase.getInstance().getReference().child("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                             .setValue(userInfo);
                                     if(user.role =="Parent"){

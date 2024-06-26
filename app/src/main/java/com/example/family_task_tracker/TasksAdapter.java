@@ -38,6 +38,7 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.ViewHolder> 
         Bonus_Tasks data = dataList.get(position);
         holder.textView1.setText(data.getName_task());
         holder.textView2.setText(data.getTask_conditions());
+        holder.textView3.setText(data.getType());
         holder.itemView.setOnClickListener(v -> listener.onTaskClick(data));
     }
 
@@ -49,11 +50,13 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.ViewHolder> 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         final TextView textView1;
         final TextView textView2;
+        final TextView textView3;
 
         public ViewHolder(View itemView) {
             super(itemView);
             textView1 = itemView.findViewById(R.id.NAme);
             textView2 = itemView.findViewById(R.id.Conditions);
+            textView3 = itemView.findViewById(R.id.Type_tv);
         }
     }
 }

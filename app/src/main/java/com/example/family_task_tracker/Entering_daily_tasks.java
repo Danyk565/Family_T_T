@@ -62,6 +62,7 @@ public class Entering_daily_tasks extends AppCompatActivity {
         Button upload_daily_tasks_BT = findViewById(R.id.upload_task);
         EditText Name_task = findViewById(R.id.Name_marafon);
         EditText Task_control = findViewById(R.id.Task_conditions);
+        EditText Scores = findViewById(R.id.Scores);
 
 
 
@@ -90,6 +91,7 @@ public class Entering_daily_tasks extends AppCompatActivity {
                     String str_Guid = String.valueOf(java.util.UUID.randomUUID());
                     task_map.put("tasks/"+"daily_tasks/"+str_Guid+"/name_task", Name_task.getText().toString());
                     task_map.put("tasks/"+"daily_tasks/"+str_Guid+"/condition", Task_control.getText().toString());
+                    task_map.put("tasks/"+"daily_tasks/"+str_Guid+"/scores", Scores.getText().toString());
                     UserRef.updateChildren(task_map);
                     //Map<String,Object> task_condition = new HashMap<>();
 

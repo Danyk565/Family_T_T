@@ -13,13 +13,15 @@ public class Bonus_Tasks implements Parcelable {
     public boolean Task_control;
     public String Uid;
     public String scores;
+    public String Type;
 
-    public Bonus_Tasks(String Name_task, String Task_conditions, boolean Task_control, String Uid, String scores){
+    public Bonus_Tasks(String Name_task, String Task_conditions, boolean Task_control, String Uid, String scores,String Type){
         this.Name_task = Name_task;
         this.Task_conditions = Task_conditions;
         this.Task_control = Task_control;
         this.Uid = Uid;
         this.scores = scores;
+        this.Type = Type;
     }
 
     public Bonus_Tasks(){};
@@ -31,6 +33,7 @@ public class Bonus_Tasks implements Parcelable {
         Task_control = in.readBoolean();
         Uid = in.readString();
         scores = in.readString();
+        Type = in.readString();
     }
 
     public static final Creator<Bonus_Tasks> CREATOR = new Creator<Bonus_Tasks>() {
@@ -101,5 +104,14 @@ public class Bonus_Tasks implements Parcelable {
         dest.writeBoolean(Task_control);
         dest.writeString(Uid);
         dest.writeString(scores);
+        dest.writeString(Type);
+    }
+
+    public String getType() {
+        return Type;
+    }
+
+    public void setType(String type) {
+        Type = type;
     }
 }
