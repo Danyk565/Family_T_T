@@ -7,12 +7,12 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
-public class Bonus_Tasks implements Parcelable  {
-    public static String Name_task;
-    public static String Task_conditions;
-    public static boolean Task_control;
-    public static String Uid;
-    public static String  scores;
+public class Bonus_Tasks implements Parcelable {
+    public String Name_task;
+    public String Task_conditions;
+    public boolean Task_control;
+    public String Uid;
+    public String scores;
 
     public Bonus_Tasks(String Name_task, String Task_conditions, boolean Task_control, String Uid, String scores){
         this.Name_task = Name_task;
@@ -23,6 +23,7 @@ public class Bonus_Tasks implements Parcelable  {
     }
 
     public Bonus_Tasks(){};
+
     @RequiresApi(api = Build.VERSION_CODES.Q)
     protected Bonus_Tasks(Parcel in) {
         Name_task = in.readString();
@@ -31,6 +32,7 @@ public class Bonus_Tasks implements Parcelable  {
         Uid = in.readString();
         scores = in.readString();
     }
+
     public static final Creator<Bonus_Tasks> CREATOR = new Creator<Bonus_Tasks>() {
         @Override
         public Bonus_Tasks createFromParcel(Parcel in) {
@@ -45,44 +47,45 @@ public class Bonus_Tasks implements Parcelable  {
             return new Bonus_Tasks[size];
         }
     };
-    public static String getUid() {
+
+    public String getUid() {
         return Uid;
     }
 
-    public static String getScores() {
+    public String getScores() {
         return scores;
     }
 
-    public static void setScores(String scores) {
-        Bonus_Tasks.scores = scores;
+    public void setScores(String scores) {
+        this.scores = scores;
     }
 
-    public static void setUid(String uid) {
-        Uid = uid;
+    public void setUid(String uid) {
+        this.Uid = uid;
     }
 
-    public static String getName_task() {
+    public String getName_task() {
         return Name_task;
     }
 
-    public static void setName_task(String name_task) {
-        Name_task = name_task;
+    public void setName_task(String name_task) {
+        this.Name_task = name_task;
     }
 
-    public static boolean isTask_control() {
+    public boolean isTask_control() {
         return Task_control;
     }
 
-    public static void setTask_control(boolean task_control) {
-        Task_control = task_control;
+    public void setTask_control(boolean task_control) {
+        this.Task_control = task_control;
     }
 
-    public static String getTask_conditions() {
+    public String getTask_conditions() {
         return Task_conditions;
     }
 
-    public static void setTask_conditions(String task_conditions) {
-        Task_conditions = task_conditions;
+    public void setTask_conditions(String task_conditions) {
+        this.Task_conditions = task_conditions;
     }
 
     @Override

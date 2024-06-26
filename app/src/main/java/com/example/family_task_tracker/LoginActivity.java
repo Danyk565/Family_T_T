@@ -124,6 +124,8 @@ public class LoginActivity extends AppCompatActivity {
                                                                             task.scores="0";
                                                                         }
                                                                         task.Task_control=false;
+                                                                        String s = task.Task_conditions;
+                                                                        String s1 = task.Name_task;
                                                                         taskList.add(task);
                                                                     }
 
