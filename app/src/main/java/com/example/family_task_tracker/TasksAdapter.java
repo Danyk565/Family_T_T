@@ -1,6 +1,8 @@
 package com.example.family_task_tracker;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,12 +11,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.ViewHolder> {
     private final List<Bonus_Tasks> dataList;
     private final LayoutInflater inflater;
     private final OnTaskClickListener listener;
+    private final Context context;
 
     public interface OnTaskClickListener {
         void onTaskClick(Bonus_Tasks task);
@@ -24,6 +28,7 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.ViewHolder> 
         this.dataList = dataList;
         this.inflater = LayoutInflater.from(context);
         this.listener = listener;
+        this.context = context;
     }
 
     @NonNull
@@ -39,7 +44,11 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.ViewHolder> 
         holder.textView1.setText(data.getName_task());
         holder.textView2.setText(data.getTask_conditions());
         holder.textView3.setText(data.getType());
-        holder.itemView.setOnClickListener(v -> listener.onTaskClick(data));
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, Text_task.class);
+            intent.putExtra("taskName", data.getName_task());
+            context.startActivity(intent);
+        });
     }
 
     @Override

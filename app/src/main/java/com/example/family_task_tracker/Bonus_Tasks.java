@@ -7,7 +7,9 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
-public class Bonus_Tasks implements Parcelable {
+import java.util.ArrayList;
+
+public class Bonus_Tasks extends ArrayList<Parcelable> implements Parcelable {
     public String Name_task;
     public String Task_conditions;
     public boolean Task_control;
