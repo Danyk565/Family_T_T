@@ -14,19 +14,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.ViewHolder> {
+public class TaskparentAdapter extends RecyclerView.Adapter<TaskparentAdapter.ViewHolder> {
     private final List<Bonus_Tasks> dataList;
     private final List<Integer> drawableList;  // List of drawable resources
     private final LayoutInflater inflater;
     private final OnTaskClickListener listener;
     private final Context context;
 
-
     public interface OnTaskClickListener {
         void onTaskClick(Bonus_Tasks task);
     }
 
-    public TasksAdapter(List<Bonus_Tasks> dataList, List<Integer> drawableList, Context context, OnTaskClickListener listener) {
+    public TaskparentAdapter(List<Bonus_Tasks> dataList, List<Integer> drawableList, Context context, OnTaskClickListener listener) {
         this.dataList = dataList;
         this.drawableList = drawableList;
         this.inflater = LayoutInflater.from(context);
@@ -55,16 +54,7 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.ViewHolder> 
             holder.imageView.setImageResource(drawableList.get(1));
         }
 
-        holder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, Text_task.class);
-            intent.putExtra("taskName", data.getName_task());
-            intent.putIntegerArrayListExtra("drawableList", new ArrayList<>(drawableList));
-            context.startActivity(intent);
-            /*Intent intent2 = new Intent(context, Active_tasks.class);
-            intent.putExtra("taskName", data.getName_task());
-            intent.putIntegerArrayListExtra("drawableList", new ArrayList<>(drawableList));
-            context.startActivity(intent2);*/
-        });
+        holder.itemView.setOnClickListener(v -> listener.onTaskClick(data));
     }
 
     @Override

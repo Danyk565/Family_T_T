@@ -26,6 +26,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.security.cert.PolicyNode;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -64,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Fields cannot be empty", Toast.LENGTH_SHORT).show();
                 }
                 else{
+                    List<Bonus_Tasks> taskList = new ArrayList<>();
                     FirebaseAuth.getInstance().signInWithEmailAndPassword(log.getText().toString(),pas.getText().toString())
                             .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                 @Override
@@ -73,13 +75,10 @@ public class LoginActivity extends AppCompatActivity {
                                             @Override
                                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                                 String role = snapshot.getValue(String.class).toString();
-                                                if(role.equals("Parent")){
-                                                    startActivity(new Intent(LoginActivity.this,Parent_account.class));
-                                                } else if (role.equals("Child")) {
+                                                if (role.equals("Child")) {
                                                     if(mRef.child("users").child(User.getUid()).child("parent").toString().equals("0")){
                                                         startActivity(new Intent(LoginActivity.this, Child_account.class));
                                                     }
-                                                    List<Bonus_Tasks> taskList = new ArrayList<>();
                                                     mRef.child("users").child(User.getUid()).child("parent").addValueEventListener(new ValueEventListener() {
                                                         @Override
                                                         public void onDataChange(DataSnapshot dataSnapshot) {
@@ -154,6 +153,7 @@ public class LoginActivity extends AppCompatActivity {
                                                                     Intent List = new Intent(LoginActivity.this, Child_account.class);
                                                                     List.putParcelableArrayListExtra("bonusTasksList", (ArrayList<? extends Parcelable>) taskList);
                                                                     startActivity(List);
+
                                                                 }
 
                                                                 @Override
@@ -170,6 +170,125 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
+                                                }
+                                                else
+                                                    if(role.equals("Parent")){
+                                                        mRef.child("users").child(User.getUid()).child("tasks").child("bonus_tasks").addValueEventListener(new ValueEventListener() {
+                                                            @Override
+                                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                                for (DataSnapshot taskSnapshot : snapshot.getChildren()) {
+                                                                    Bonus_Tasks task = new Bonus_Tasks();
+                                                                    task.Uid = taskSnapshot.getKey();
+                                                                    for (DataSnapshot childSnapshot : taskSnapshot.getChildren()) {
+                                                                        String key = childSnapshot.getKey();
+                                                                        if (key.equals("condition")) {
+                                                                            task.Task_conditions = childSnapshot.getValue(String.class);
+                                                                        }
+                                                                        if (key.equals("name_task")) {
+                                                                            task.Name_task = childSnapshot.getValue(String.class);
+                                                                        }
+                                                                        if (key.equals("scores")) {
+                                                                            task.scores = childSnapshot.getValue(String.class);
+                                                                        }
+                                                                    }
+                                                                    if (task.scores == null) {
+                                                                        task.scores = "0";
+                                                                    }
+                                                                    task.Task_control = false;
+                                                                    task.Type = "bonus_tasks";
+                                                                    taskList.add(task);
+                                                                }
+
+
+                                                            }
+
+                                                            @Override
+                                                            public void onCancelled(@NonNull DatabaseError error) {
+                                                                // Handle error
+                                                            }
+                                                        });
+                                                        mRef.child("users").child(User.getUid()).child("tasks").child("daily_tasks").addValueEventListener(new ValueEventListener() {
+                                                            @Override
+                                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                                for (DataSnapshot taskSnapshot : snapshot.getChildren()) {
+                                                                    Bonus_Tasks task = new Bonus_Tasks();
+                                                                    task.Uid = taskSnapshot.getKey();
+                                                                    for (DataSnapshot childSnapshot : taskSnapshot.getChildren()) {
+                                                                        String key = childSnapshot.getKey();
+                                                                        if (key.equals("condition")) {
+                                                                            task.Task_conditions = childSnapshot.getValue(String.class);
+                                                                        }
+                                                                        if (key.equals("name_task")) {
+                                                                            task.Name_task = childSnapshot.getValue(String.class);
+                                                                        }
+                                                                        if (key.equals("scores")) {
+                                                                            task.scores = childSnapshot.getValue(String.class);
+                                                                        }
+                                                                    }
+                                                                    if (task.scores == null) {
+                                                                        task.scores = "0";
+                                                                    }
+                                                                    task.Task_control = false;
+                                                                    task.Type = "daily_tasks";
+                                                                    taskList.add(task);
+                                                                }
+
+                                                                Intent listIntent = new Intent(LoginActivity.this, Parent_account.class);
+                                                                listIntent.putParcelableArrayListExtra("bonusTasksList2", (ArrayList<? extends Parcelable>) taskList);
+                                                                startActivity(listIntent);
+                                                            }
+
+                                                            @Override
+                                                            public void onCancelled(@NonNull DatabaseError error) {
+                                                                // Handle error
+                                                            }
+                                                        });
+
+                                                        /*mRef.child("users").child(User.getUid()).child("parent").addValueEventListener(new ValueEventListener() {
+                                                            @Override
+                                                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                                                String parentUid = dataSnapshot.getValue(String.class);
+                                                                DatabaseReference ParentRef_bonus_tasks = mRef.child("users").child(parentUid).child("tasks").child("bonus_tasks");
+                                                                ParentRef_bonus_tasks.addValueEventListener(new ValueEventListener() {
+                                                                    @Override
+                                                                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                                                                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                                                            Bonus_Tasks task = new Bonus_Tasks();
+                                                                            task.Uid = snapshot.getKey();
+                                                                            for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                                                                                String Key = childSnapshot.getKey();
+                                                                                if(Key.equals("condition")){
+                                                                                    task.Task_conditions = childSnapshot.getValue(String.class);}
+                                                                                if(Key.equals("name_task")){
+                                                                                    task.Name_task =childSnapshot.getValue(String.class);}
+                                                                                if(Key.equals("scores")){
+                                                                                    task.scores = childSnapshot.getValue(String.class);}
+
+                                                                            }
+                                                                            if (task.scores==null){
+                                                                                task.scores="0";
+                                                                            }
+                                                                            task.Task_control=false;
+                                                                            task.Type = "bonus_tasks";
+                                                                            taskList.add(task);
+                                                                        }
+                                                                    }
+
+                                                                    @Override
+                                                                    public void onCancelled(DatabaseError databaseError) {
+                                                                    }
+                                                                });
+                                                            }
+
+                                                            @Override
+                                                            public void onCancelled(DatabaseError databaseError) {
+                                                                // Обработка ошибок
+                                                            }
+                                                        });*/
+                                                        Intent List2 = new Intent(LoginActivity.this, Parent_account.class);
+                                                        List2.putParcelableArrayListExtra("bonusTasksList2", (ArrayList<? extends Parcelable>) taskList);
+                                                        startActivity(List2);
                                                 }
                                             }
                                             @Override
@@ -189,6 +308,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
     public void onClickregister(View v) {
         Intent intent=new Intent(LoginActivity.this,RegistrActivity.class);
         startActivity(intent);

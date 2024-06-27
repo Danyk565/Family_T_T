@@ -137,12 +137,12 @@
         android:inputType="number"
         android:textColor="#000000"
         android:textColorHighlight="#000000"
-        app:layout_constraintEnd_toEndOf="@+id/Scores_tv"
-        app:layout_constraintStart_toStartOf="@+id/Scores_tv"
-        app:layout_constraintTop_toBottomOf="@+id/Scores_tv" />
+        app:layout_constraintEnd_toEndOf="@+id/Scores_tv_parent"
+        app:layout_constraintStart_toStartOf="@+id/Scores_tv_parent"
+        app:layout_constraintTop_toBottomOf="@+id/Scores_tv_parent" />
 
     <TextView
-        android:id="@+id/Scores_tv"
+        android:id="@+id/Scores_tv_parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/arimo"

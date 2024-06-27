@@ -21,14 +21,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class Text_task extends AppCompatActivity {
+public class Text_parent_task extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference mRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_text_task);
+        setContentView(R.layout.activity_text_parent_task);
         DisplayMetrics bt = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(bt);
         int width = bt.widthPixels;
@@ -36,13 +36,13 @@ public class Text_task extends AppCompatActivity {
 
         TextView task_condition = findViewById(R.id.task_condition_parent);
         TextView scores = findViewById(R.id.Scores_tv_parent);
-        TextView name_task = findViewById(R.id.name_task);
+        TextView name_task = findViewById(R.id.name_task_parent);
 
         mAuth = FirebaseAuth.getInstance();
         mRef = FirebaseDatabase.getInstance().getReference();
         FirebaseUser User = mAuth.getInstance().getCurrentUser();
 
-        String taskName = getIntent().getStringExtra("taskName");
+        String taskName = getIntent().getStringExtra("taskName3");
 
 
         //NumberPicker hours,minutes,seconds;

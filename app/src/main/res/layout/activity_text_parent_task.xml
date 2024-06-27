@@ -5,11 +5,11 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/stroke"
-    tools:context=".Text_task">
+    android:background="#F6F5F5"
+    tools:context=".Text_parent_task">
 
     <TextView
-        android:id="@+id/name_task"
+        android:id="@+id/name_task_parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Название задачи"
@@ -30,7 +30,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name_task"
+        app:layout_constraintTop_toBottomOf="@+id/name_task_parent"
         app:layout_constraintVertical_bias="0.01999998" />
 
     <TextView
@@ -92,6 +92,7 @@
         app:layout_constraintTop_toTopOf="@+id/imageView13"
         app:layout_constraintVertical_bias="0.55"
         app:srcCompat="@drawable/image_login" />
+
     <ImageButton
         android:id="@+id/ebt_finish"
         android:layout_width="36dp"
@@ -106,17 +107,17 @@
 
     <ImageButton
         android:id="@+id/complete_btn"
-        android:layout_width="267dp"
-        android:layout_height="78dp"
+        android:layout_width="176dp"
+        android:layout_height="58dp"
         android:background="@android:color/transparent"
         android:cropToPadding="false"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.522"
+        app:layout_constraintHorizontal_bias="0.081"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView13"
-        app:layout_constraintVertical_bias="0.602"
+        app:layout_constraintVertical_bias="0.542"
         app:srcCompat="@drawable/group_77" />
 
     <TextView
@@ -133,6 +134,5 @@
         app:layout_constraintStart_toStartOf="@+id/complete_btn"
         app:layout_constraintTop_toTopOf="@+id/complete_btn"
         app:layout_constraintVertical_bias="0.4" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
