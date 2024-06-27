@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Parent_account extends AppCompatActivity {
-    private int progress=0;
+    private int progress=60;
     private FirebaseAuth mAuth;
     private DatabaseReference mRef;
     private AlertDialog.Builder list;
